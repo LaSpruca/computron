@@ -1,0 +1,7 @@
+name = "computron"
+type = "webpack"
+workers_dev = true
+
+[site]
+bucket = "./build"
+entry-point = "./workers-site"
