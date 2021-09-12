@@ -39,13 +39,13 @@
 </header>
 
 <style lang="scss">
-	@import 'colors';
+	@import '../../css/colors';
 
 	header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		background-color: rgb(0, 145, 255);
+		background-color: $blue-crayola;
 	}
 
 	.brand {
@@ -71,7 +71,7 @@
 			top: 0;
 			width: 150%;
 			height: 100%;
-			background-color: #fcf7ff;
+			background-color: $ghost-white;
 			transform: skewX(-30deg);
 			z-index: -1;
 		}
@@ -100,7 +100,7 @@
 					position: absolute;
 					left: 1rem;
 					bottom: 0.8rem;
-					background-color: #fcf7ff;
+					background-color: $ghost-white;
 					transition: width 200ms ease-in;
 				}
 
@@ -135,6 +135,11 @@
 						padding: 0.5rem 1rem;
 						font-size: 18pt;
 					}
+				}
+
+				& a {
+					color: $ghost-white;
+					text-decoration: none;
 				}
 			}
 		}
