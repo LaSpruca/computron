@@ -2,15 +2,23 @@
 	import { page } from '$app/stores';
 	import getPageName from '$lib/pageName';
 	import logo from './logo.svg';
+	import { zip } from '$lib/utils';
 
-	let { path } = $page;
+	let path: string = '/';
+
+	page.subscribe((f) => {
+		path = f.path;
+	});
+
 	let pageName: string;
 
 	$: pageName = getPageName(path);
 
-	console.log(path);
-
-	const getClassFor = (pth: string): string => (pth == path ? 'active' : '');
+	const isActive = (pth: string): boolean =>
+		zip(pth.split('/'), path.split('/'))
+			.slice(1)
+			.map(([a, b]) => a === b)
+			.reduce((prev, curr) => (prev === false ? false : curr));
 </script>
 
 <header>
@@ -21,19 +29,25 @@
 
 	<nav class="nav">
 		<ul class="nav__list">
-			<li class="nav__listitem"><a href="/">Home</a></li>
+			{#key path}
+				<li class="nav__list__item"><a href="/" class:active={isActive('/')}>Home</a></li>
 
-			<li class="nav__listitem">
-				<a href="/downloads">Downloads</a>
-			</li>
-			<li class="nav__listitem">
-				<a href="/tutorials">Tutorials</a>
-				<ul class="nav__listitemdrop">
-					<li><a href="/tutorials/linux">Linux</a></li>
-					<li><a href="/tutorials/windows">Windows</a></li>
-				</ul>
-			</li>
-			<li class="nav__listitem"><a href="links">Links</a></li>
+				<li class="nav__list__item">
+					<a href="/downloads" class:active={isActive('/downloads')}>Downloads</a>
+				</li>
+				<li class="nav__list__item">
+					<a class:active={isActive('/tutorials')} href="/tutorials">Tutorials</a>
+					<ul class="nav__list__item__drop">
+						<li>
+							<a class:active={isActive('/tutorials/linux')} href="/tutorials/linux">Linux</a>
+						</li>
+						<li>
+							<a class:active={isActive('/tutorials/windows')} href="/tutorials/windows">Windows</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav__list__item"><a href="links" class:active={isActive('/links')}>Links</a></li>
+			{/key}
 		</ul>
 	</nav>
 </header>
@@ -58,10 +72,9 @@
 		width: 30vw;
 		z-index: 0;
 
-		// clip-path: polygon(0 0, 100% 0, 100% 100, 0 100);
-
 		.logo {
 			width: 300px;
+			height: 100%;
 		}
 
 		&::before {
@@ -85,13 +98,23 @@
 			gap: 2rem;
 			margin: 0 2rem;
 
-			&item {
+			&__item {
 				list-style: none;
 				font-weight: bold;
 				font-size: 20pt;
 				position: relative;
 				padding: 1.5rem 1rem;
-				cursor: pointer;
+
+				a {
+					color: #e0e0e0;
+
+					text-decoration: none;
+					transition: 100ms color linear;
+
+					&.active {
+						color: $ghost-white;
+					}
+				}
 
 				&::after {
 					content: '';
@@ -104,9 +127,15 @@
 					transition: width 200ms ease-in;
 				}
 
-				&:hover::after,
-				&:focus::after {
-					width: 80%;
+				&:hover,
+				&:focus {
+					& a {
+						color: $ghost-white;
+					}
+
+					&:after {
+						width: 80%;
+					}
 				}
 
 				&:hover ul,
@@ -115,7 +144,7 @@
 					visibility: visible;
 				}
 
-				&drop {
+				&__drop {
 					position: absolute;
 					top: 4.5rem;
 					left: -1rem;
@@ -134,12 +163,18 @@
 						list-style: none;
 						padding: 0.5rem 1rem;
 						font-size: 18pt;
-					}
-				}
+						& a {
+							color: $space-cadet !important;
 
-				& a {
-					color: $ghost-white;
-					text-decoration: none;
+							&:hover {
+								color: $grey !important;
+							}
+
+							&.active {
+								color: $grey !important;
+							}
+						}
+					}
 				}
 			}
 		}
