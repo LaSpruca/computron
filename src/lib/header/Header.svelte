@@ -60,6 +60,7 @@
 		justify-content: space-between;
 		align-items: center;
 		background-color: $blue-crayola;
+		box-shadow: grey 0 0 10px;
 	}
 
 	.brand {
