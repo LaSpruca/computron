@@ -46,7 +46,9 @@
 						</li>
 					</ul>
 				</li>
-				<li class="nav__list__item"><a href="links" class:active={isActive('/links')}>Links</a></li>
+				<li class="nav__list__item">
+					<a href="/links" class:active={isActive('/links')}>Links</a>
+				</li>
 			{/key}
 		</ul>
 	</nav>
