@@ -31,6 +31,19 @@
 	</div>
 </div>
 
+<div class="section">
+	<div class="title">
+		<h1>References</h1>
+	</div>
+	<div class="content">
+		<p>Quick references for common settings and commands</p>
+		<br />
+		<br />
+		<a href="/tutorials/windows">Tutorials - Windows</a>
+		<a href="/tutorials/linux">Tutorials - Linux</a>
+	</div>
+</div>
+
 <style lang="scss">
 	@import '../css/colors';
 
