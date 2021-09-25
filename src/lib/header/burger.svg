@@ -1,0 +1,8 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="burger">
+<rect width="1024" height="1024" fill="white"/>
+<path id="btm" d="M0 1014H1024" stroke="black" stroke-width="20"/>
+<path id="mid" d="M0 512H1024" stroke="black" stroke-width="20"/>
+<path id="top" d="M0 10H1024" stroke="black" stroke-width="20"/>
+</g>
+</svg>

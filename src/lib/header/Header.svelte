@@ -19,6 +19,8 @@
 			.slice(1)
 			.map(([a, b]) => a === b)
 			.reduce((prev, curr) => (prev === false ? false : curr));
+
+	let burger: boolean = false;
 </script>
 
 <header>
@@ -27,7 +29,9 @@
 		<h2>{pageName}</h2>
 	</div>
 
-	<nav class="nav">
+	<button class='burger'><span>	</span></button>
+
+	<nav class="nav" class:showen={burger}>
 		<ul class="nav__list">
 			{#key path}
 				<li class="nav__list__item"><a href="/" class:active={isActive('/')}>Home</a></li>

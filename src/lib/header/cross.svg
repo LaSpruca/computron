@@ -1,0 +1,12 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="cross" clip-path="url(#clip0)">
+<rect width="1024" height="1024" fill="white"/>
+<path id="btm" d="M0 1024L1023.5 0.499863" stroke="black" stroke-width="20"/>
+<path id="top" d="M0 0L1023.5 1023.5" stroke="black" stroke-width="20"/>
+</g>
+<defs>
+<clipPath id="clip0">
+<rect width="1024" height="1024" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -1,0 +1,29 @@
+@import '../css/colors';
+
+@mixin box {
+  text-align: center;
+  margin: 1em;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: $ghost-white;
+  border: #efefef 2px solid;
+}
+
+@mixin link {
+  background-color: $space-cadet;
+  padding: 1rem;
+
+  a {
+    color: $ghost-white;
+    text-decoration: none;
+  }
+
+  width: max-content;
+  height: max-content;
+
+  transition: transform ease-in 0.1s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
