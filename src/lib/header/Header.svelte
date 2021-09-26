@@ -119,6 +119,7 @@
       margin: 0 2rem;
 
       &__item {
+				z-index: 99;
         list-style: none;
         font-weight: bold;
         font-size: 20pt;

@@ -25,6 +25,8 @@
 </script>
 
 <script lang='ts'>
+	import _ from "lodash";
+
 	type Platform = { platform: string, selected: boolean };
 	type Tag = { tag: string, selected: boolean };
 
@@ -33,56 +35,22 @@
 	export let tags: Tag[];
 	export let platforms: Platform[];
 
-	let selected_platforms: string[] = [];
-	let selected_tags: string[] = [];
+	let selectedPlatforms: string[] = [];
+	let selectedTags: string[] = [];
 
-	$: selected_platforms = platforms.filter(p => p.selected).map(p => p.platform);
-	$: selected_tags = tags.filter(p => p.selected).map(p => p.tag);
+	let filteredDownloadsByPlatform: Download[];
+	let filteredDownloadsByTag: Download[];
 
-	let filtered_downloads: Download[];
+	$: filteredDownloadsByPlatform = selectedPlatforms.length >= 1 ? downloads.filter(download => selectedPlatforms.every(v => download.platforms.includes(v))) : downloads;
+	$: filteredDownloadsByTag = selectedTags.length >= 1 ? downloads.filter(download => selectedTags.every(v => download.tags.includes(v))) : downloads;
+
+	$: selectedPlatforms = platforms.filter(p => p.selected).map(p => p.platform);
+	$: selectedTags = tags.filter(p => p.selected).map(p => p.tag);
+
+	let filteredDownloads: Download[];
 
 	$: {
-		if (selected_platforms.length == 0 && selected_tags.length == 0) {
-			filtered_downloads = downloads;
-		} else if (selected_platforms.length != 0 && selected_tags.length != 0) {
-			filtered_downloads =
-				downloads
-					.filter(download =>
-						download
-							.platforms
-							.some(item =>
-								selected_platforms
-									.includes(item)
-							) && download
-							.tags
-							.some(item =>
-								selected_tags
-									.includes(item)
-							)
-					);
-		} else if (selected_platforms.length != 0) {
-			filtered_downloads =
-				downloads
-					.filter(download =>
-						download
-							.platforms
-							.some(item =>
-								selected_platforms
-									.includes(item)
-							)
-					);
-		} else {
-			filtered_downloads =
-				downloads
-					.filter(download =>
-						download
-							.tags
-							.some(item =>
-								selected_tags
-									.includes(item)
-							)
-					);
-		}
+		filteredDownloads = _.intersection(filteredDownloadsByPlatform, filteredDownloadsByTag);
 	}
 </script>
 
@@ -111,7 +79,7 @@
 </div>
 
 <div class='downloads'>
-	{#each filtered_downloads as download}
+	{#each filteredDownloads as download}
 		<div class='download-card'>
 			<h1 class='download-card__name'>
 				{download.name}
