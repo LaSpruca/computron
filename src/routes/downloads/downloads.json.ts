@@ -15,7 +15,7 @@ const downloads: Download[] = [
 	},
 	{
 		name: 'OBS',
-		url: 'obsproject.com',
+		url: 'https://obsproject.com',
 		tags: ['Utilities', 'Open Source'],
 		description: 'Free and open source software for live streaming and screen recording',
 		platforms: [

@@ -32,8 +32,6 @@
 	export let downloads: Download[];
 	export let tags: Tag[];
 	export let platforms: Platform[];
-	
-	console.log(platforms, tags)
 
 	let selected_platforms: string[] = [];
 	let selected_tags: string[] = [];
