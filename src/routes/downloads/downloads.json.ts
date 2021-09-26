@@ -61,7 +61,7 @@ const downloads: Download[] = [
 		name: 'balenaEtcher',
 		url: 'https://www.balena.io/etcher/',
 		description: 'Flash OS images to SD cards & USB drives, safely and easily.\n',
-		tags: ['Util', 'Open Source'],
+		tags: ['Utilities', 'Open Source'],
 		platforms: [
 			'Linux',
 			'Windows',
@@ -72,7 +72,7 @@ const downloads: Download[] = [
 		name: 'VLC Media player',
 		url: 'https://www.videolan.org/',
 		description: 'A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols.\n',
-		tags: ['Util', 'Open Source'],
+		tags: ['Utilities', 'Open Source'],
 		platforms: [
 			'Linux',
 			'Windows',
