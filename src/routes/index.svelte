@@ -14,8 +14,8 @@
 		<p>Download some free applications to help in your daily life</p>
 		<br />
 		<br />
-		<div class='section__links'>
-			<div class='section__links__link'><a href='/downloads'>Downloads</a></div>
+		<div class='section__content__links'>
+			<div class='section__content__links__link'><a href='/downloads'>Downloads</a></div>
 		</div>
 	</div>
 </div>
@@ -28,9 +28,9 @@
 		<p>Learn how to use your computer</p>
 		<br />
 		<br />
-		<div class='section__links'>
-			<div class='section__links__link'><a href='/tutorials/windows'>Tutorials - Windows</a></div>
-			<div class='section__links__link'><a href='/tutorials/linux'>Tutorials - Linux</a></div>
+		<div class='section__content__links'>
+			<div class='section__content__links__link'><a href='/tutorials/windows'>Tutorials - Windows</a></div>
+			<div class='section__content__links__link'><a href='/tutorials/linux'>Tutorials - Linux</a></div>
 		</div>
 
 	</div>
@@ -44,16 +44,17 @@
 		<p>Quick references for common settings and commands</p>
 		<br />
 		<br />
-		<div class='section__links'>
-			<div class='section__links__link'><a href='/tutorials/windows'>Tutorials - Windows</a></div>
-			<div class='section__links__link'><a href='/tutorials/linux'>Tutorials - Linux</a></div>
+		<div class='section__content__links'>
+			<div class='section__content__links__link'><a href='/tutorials/windows'>Tutorials - Windows</a></div>
+			<div class='section__content__links__link'><a href='/tutorials/linux'>Tutorials - Linux</a></div>
 		</div>
 	</div>
 </div>
 
 <style lang='scss'>
   @import '../css/colors';
-	@import "../css/mixins";
+  @import "../css/mixins";
+
   .welcome {
     @include box;
 
@@ -74,7 +75,7 @@
     display: flex;
     flex-direction: row;
 
-    &:nth-child(2n + 1) {
+    &:nth-child(odd) {
       flex-direction: row-reverse;
 
       .section__title::before {
@@ -110,17 +111,53 @@
       width: 100%;
       margin: auto 0;
       text-align: center;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			&__links {
-				display: flex;
-				gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-				&__link {
-					@include link;
-				}
+      &__links {
+        display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+        gap: 2rem;
+
+        &__link {
+					background: red;
+          @include link;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1040px) {
+		.welcome p {
+			padding: 1rem;
+		}
+
+    .section {
+      flex-direction: column;
+			text-align: center;
+
+			&:nth-child(odd) {
+        flex-direction: column;
+      }
+
+      &__title {
+				justify-content: center;
+				align-items: center;
+				padding: 1rem;
+        width: 100%;
+
+        &::before {
+          transform: skewX(0deg);
+        }
+      }
+
+			&__content {
+				padding-top: 1rem;
+
 			}
     }
   }
