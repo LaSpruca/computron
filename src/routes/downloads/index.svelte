@@ -4,23 +4,116 @@
 
 	export const load: Load = async ({ fetch }) => {
 		let downloads: Download[] = await (await fetch('/downloads/downloads.json')).json();
-		console.log(downloads);
+		let tags: Set<string> = new Set();
+		let platforms: Set<string> = new Set();
+		for (let download of downloads) {
+			download.tags.forEach(tags.add, tags);
+			download.platforms.forEach(platforms.add, platforms);
+		}
 		return {
 			props: {
-				downloads
+				downloads,
+				tags: Array.of(...tags).map(x => {
+					return { tag: x, selected: false };
+				}),
+				platforms: Array.of(...platforms).map(x => {
+					return { platform: x, selected: false };
+				})
 			}
 		};
 	};
 </script>
 
 <script lang='ts'>
+	type Platform = { platform: string, selected: boolean };
+	type Tag = { tag: string, selected: boolean };
+
+
 	export let downloads: Download[];
+	export let tags: Tag[];
+	export let platforms: Platform[];
+	
+	console.log(platforms, tags)
+
+	let selected_platforms: string[] = [];
+	let selected_tags: string[] = [];
+
+	$: selected_platforms = platforms.filter(p => p.selected).map(p => p.platform);
+	$: selected_tags = tags.filter(p => p.selected).map(p => p.tag);
+
+	let filtered_downloads: Download[];
+
+	$: {
+		if (selected_platforms.length == 0 && selected_tags.length == 0) {
+			filtered_downloads = downloads;
+		} else if (selected_platforms.length != 0 && selected_tags.length != 0) {
+			filtered_downloads =
+				downloads
+					.filter(download =>
+						download
+							.platforms
+							.some(item =>
+								selected_platforms
+									.includes(item)
+							) && download
+							.tags
+							.some(item =>
+								selected_tags
+									.includes(item)
+							)
+					);
+		} else if (selected_platforms.length != 0) {
+			filtered_downloads =
+				downloads
+					.filter(download =>
+						download
+							.platforms
+							.some(item =>
+								selected_platforms
+									.includes(item)
+							)
+					);
+		} else {
+			filtered_downloads =
+				downloads
+					.filter(download =>
+						download
+							.tags
+							.some(item =>
+								selected_tags
+									.includes(item)
+							)
+					);
+		}
+	}
 </script>
 
 <h1 class='title'>Downloads</h1>
 
+<div class='filters'>
+	<span class='filters__title'>Filter by:</span>
+	<div class='filters__list'>
+		<span class='filters__list__title'>Tags: </span>
+		{#each tags as tag}
+			<label class='filters__list__item'>
+				<input type='checkbox' class='filters__list__item__tag' bind:checked={tag.selected}>
+				{tag.tag}
+			</label>
+		{/each}
+	</div>
+	<div class='filters__list'>
+		<span class='filters__list__title'>Platform: </span>
+		{#each platforms as platform}
+			<label class='filters__list__item'>
+				<input type='checkbox' class='filters__list__item__tag' bind:value={platform.selected}>
+				{platform.platform}
+			</label>
+		{/each}
+	</div>
+</div>
+
 <div class='downloads'>
-	{#each downloads as download}
+	{#each filtered_downloads as download}
 		<div class='download-card'>
 			<h1 class='download-card__name'>
 				{download.name}
@@ -43,26 +136,53 @@
   @import '../../css/colors';
   @import "../../css/mixins";
 
-	.title {
-		text-align: center;
-		padding: 2rem;
-		font-weight: 700;
+  .title {
+    text-align: center;
+    padding: 2rem;
+    font-weight: 700;
     display: inline-block;
     left: 50%;
     transform: translateX(-50%);
     position: relative;
     width: fit-content;
 
-		&::before {
-			position: absolute;
-			bottom: 1rem;
-			content: '';
-			width: 100%;
-			height: 1rem;
-			background-color: $blue-crayola;
-			transform: translateX(-15%);
-		}
-	}
+    &::before {
+      position: absolute;
+      bottom: 1rem;
+      content: '';
+      width: 100%;
+      height: 1rem;
+      background-color: $blue-crayola;
+      transform: translateX(-15%);
+    }
+  }
+
+  .filters {
+    padding: 1rem;
+    margin: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    display: flex;
+    gap: 1.5rem;
+
+    &__title {
+      font-size: 15pt;
+      font-weight: 700;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      &__title {
+        font-weight: 600;
+      }
+    }
+  }
 
   .downloads {
     display: flex;
@@ -90,7 +210,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-			gap: 0.5rem;
+      gap: 0.5rem;
 
       &__description {
         font-weight: bold;
@@ -99,14 +219,14 @@
 
       &__link {
         @include link;
-				padding: 0.5rem;
+        padding: 0.5rem;
       }
 
-			&__tags,
-			&__platforms {
-				color: $grey;
-				font-weight: 300;
-			}
+      &__tags,
+      &__platforms {
+        color: $grey;
+        font-weight: 300;
+      }
     }
   }
 </style>

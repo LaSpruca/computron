@@ -21,8 +21,6 @@
 			.reduce((prev, curr) => (prev === false ? false : curr));
 
 	let burger: boolean = false;
-
-	$: console.log(burger);
 </script>
 
 <header>
