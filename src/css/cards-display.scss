@@ -1,0 +1,45 @@
+.cards {
+	display: flex;
+	flex-wrap: wrap;
+	flex-grow: 3;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	@include box;
+
+	width: 30%;
+	min-width: 300px;
+
+	&__name {
+		background-color: $blue-crayola;
+		color: $ghost-white;
+		padding: 1rem;
+	}
+
+	&__content {
+		padding: 0.5rem 2rem 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 0.5rem;
+
+		&__description {
+			font-weight: bold;
+			font-size: 12pt;
+		}
+
+		&__link {
+			@include link;
+			padding: 0.5rem;
+		}
+
+		&__tags,
+		&__platforms {
+			color: $grey;
+			font-weight: 300;
+		}
+	}
+}

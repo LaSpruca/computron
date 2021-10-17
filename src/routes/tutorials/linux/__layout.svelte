@@ -1,13 +1,18 @@
-<script lang='ts'>
+<script lang="ts">
 	import '../../../css/tutorial.scss';
-	import { process } from "highlight-ts";
-
-	let codeElements = document.getElementsByName("code");
-
-	for (let element of codeElements) {
-	}
 </script>
 
-<div class='tutorial'>
+<svelte:head>
+	<link
+		rel="stylesheet"
+		href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css"
+	/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+	<script>
+		hljs.highlightAll();
+	</script>
+</svelte:head>
+
+<div class="tutorial">
 	<slot />
 </div>

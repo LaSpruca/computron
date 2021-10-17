@@ -1,15 +1,18 @@
 ---
-name: "Package manager"
-tags: ["CLI"]
+name: 'Package manager'
+tags: ['CLI']
+description: Managing packages on  linux    
 ---
 
 # What is a package manager?
+
 A package manager is a collection of tools are is used to install, remove, update, and configure "packages" on your computer
 in a consistent manner. A package can be any piece of software, for a program with a GUI like Google Chrome, to a CLI app
 like cowsay, or a library like GLibC. A package manager can, but not always, have different repos to search for packages,
 and will automatically install any dependencies of the package that you are installing.
 
 # Package managers
+
 There are many package managers, for this tutorial, when I am talking about different package managers, I will
 only be talking about the different front ends, as there are many package manager front ends that use the same
 package manager under the hood.
@@ -22,3 +25,34 @@ There are four package managers that I will be discussing in this tutorial.
 - `zypper`: The default package manager on OpenSUSE. It uses the RPM format.
 
 These are just a few of the package managers that exists, these are just a few that are used in relatively common distros.
+
+# Installing packages
+
+One of the main things that you will want to do with your package manager is installing some software. Here is how you do it across distros.
+
+**apt**
+
+```bash
+  sudo apt install <package-name>
+
+```
+
+**dnf**
+
+```bash
+    sudo dnf install <package-name>
+```
+
+**pacman**
+
+```bash
+    sudo pacman -S <package-name>
+```
+
+**zypper**
+
+```bash
+    sudo zypper install <package-name>
+```
+
+# Updating the system

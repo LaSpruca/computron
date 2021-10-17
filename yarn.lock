@@ -747,13 +747,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-highlight-ts@^9.12.1-2:
-  version "9.12.1-2"
-  resolved "https://registry.yarnpkg.com/highlight-ts/-/highlight-ts-9.12.1-2.tgz#792e79b3f8e1e7c9f017cf1cc52fc4cfe694fbee"
-  integrity sha512-CkLnKaxdwUasdPbzM9YP3EQTYfY/jgLQ4dyl7FFa65h1Ymq/qm+FOsevfNRqI7ZKGlz9scPkAy9OXYvwEtcJSw==
-  dependencies:
-    tslib "^1"
-
 ignore@^4.0.6:
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
@@ -1348,7 +1341,7 @@ to-regex-range@^5.0.1:
   dependencies:
     is-number "^7.0.0"
 
-tslib@^1, tslib@^1.8.1:
+tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==

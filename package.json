@@ -33,7 +33,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"highlight-ts": "^9.12.1-2",
 		"lodash": "^4.17.21"
 	}
 }
