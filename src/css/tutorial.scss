@@ -10,6 +10,7 @@
 		text-align: center;
 		padding-bottom: 2rem;
 		position: relative;
+		padding-top: 2.5rem;
 		text-decoration: underline;
 		text-decoration-color: $blue-crayola;
 		text-decoration-thickness: 0.5rem;
@@ -31,4 +32,8 @@
 	li {
 		padding: 0.5rem 0;
 	}
+}
+
+code {
+	font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
 }

@@ -6,7 +6,8 @@ const config = {
   },
 
   "remarkPlugins": [],
-  "rehypePlugins": []
+  "rehypePlugins": [],
+  "layout": "./src/lib/TutorialLayout.svelte"
 };
 
 export default config;

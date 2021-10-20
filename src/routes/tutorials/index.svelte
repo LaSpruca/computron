@@ -1,7 +1,8 @@
 <div class='welcome'>
 	<h1>Tutorials</h1>
 	<p>
-		Discover how to computer
+		Information and tutorials on how to use a desktop computer, including package managers in linux
+		to firewall configuration in windows with descriptions of the in question software and how use it.
 	</p>
 </div>
 
@@ -14,7 +15,7 @@
 		<br />
 		<br />
 		<div class='section__content__links'>
-			<div class='section__content__links__link'><a href='/tutorials/windows'>Windows</a></div>
+			<div class='section__content__links__link'><a href='/tutorials/windows'>Tutorials - Windows</a></div>
 		</div>
 
 	</div>
@@ -29,7 +30,7 @@
 		<br />
 		<br />
 		<div class='section__content__links'>
-			<div class='section__content__links__link'><a href='/tutorials/windows'>Windows</a></div>
+			<div class='section__content__links__link'><a href='/tutorials/linux'>Tutorials - Linux</a></div>
 		</div>
 	</div>
 </div>

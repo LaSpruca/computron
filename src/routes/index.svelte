@@ -10,8 +10,11 @@
 	<div class="section__title">
 		<h1>Downloads</h1>
 	</div>
-	<div class="section__content">
-		<p>Download some free applications to help in your daily life</p>
+	<div class='section__content'>
+		<p>
+			Download useful and fun software for you desktop PC. Anything from an office sweet to OS ISO,
+			with an emphasis on free and open source software (FOSS).
+		</p>
 		<br />
 		<br />
 		<div class="section__content__links">
