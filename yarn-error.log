@@ -1,21 +1,25 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js
+  /home/laspruca/.local/share/nvm/v16.5.0/bin/node /home/laspruca/.local/share/nvm/v16.5.0/bin/yarn rebuild
 
 PATH: 
-  C:\Program Files\PowerShell\7;C:\Perl64\bin;C:\Users\me\AppData\Roaming\ActiveState\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Go\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\me\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\Program Files\WireGuard\;C:\Program Files\PowerShell\7\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\me\.cargo\bin;C:\Users\me\AppData\Local\Microsoft\WindowsApps;C:\Users\me\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\me\go\bin;C:\Users\me\.dotnet\tools;C:\Users\me\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\me\AppData\Local\gitkraken\bin;C:\Users\me\AppData\Local\Yarn\Data\global;C:\Users\me\AppData\Local\Yarn\bin;C:\Program Files (x86)\Nmap;C:\Users\me\AppData\Local\Programs\MiKTeX\miktex\bin\x64\
+  /home/laspruca/anaconda3/bin:/home/laspruca/anaconda3/condabin:/home/laspruca/.local/share/nvm/v16.5.0/bin:/home/laspruca/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/home/laspruca/.cargo/bin:/home/laspruca/Android/Sdk/platform-tools:/home/laspruca/lib/flutter/bin:/usr/share/dotnet:/usr/share/jdk15/bin:/home/laspruca/.yarn/bin:/home/laspruca/.local/lib/python3.8/site-packages:/home/laspruca/.platformio/penv/bin:/home/laspruca/.local/share/JetBrains/Toolbox/bin:/home/laspruca/.local/bin:/home/laspruca/.local/bin:/home/laspruca/.local/bin:/home/laspruca/.local/lib/python3.8/site-packages:/home/laspruca/.gem/ruby/2.7.0/bin:/home/laspruca/Qt/5.14.2/gcc_64/bin:/home/laspruca/bin:/var/lib/snapd/snap/bin:/usr/sbin:/home/laspruca/.deno/bin:/usr/local/cuda-11.4/bin:/var/lib/flatpak/exports/bin:/home/laspruca/.cargo/bin:/home/laspruca/Android/Sdk/platform-tools:/home/laspruca/lib/flutter/bin:/usr/share/dotnet:/usr/share/jdk15/bin:/home/laspruca/.yarn/bin:/home/laspruca/.local/lib/python3.8/site-packages:/home/laspruca/.platformio/penv/bin:/home/laspruca/.local/share/JetBrains/Toolbox/bin:/home/laspruca/.local/bin:/home/laspruca/.local/bin:/home/laspruca/.local/bin:/home/laspruca/.local/lib/python3.8/site-packages:/home/laspruca/.gem/ruby/2.7.0/bin:/home/laspruca/Qt/5.14.2/gcc_64/bin:/home/laspruca/bin:/var/lib/snapd/snap/bin:/usr/sbin:/home/laspruca/.deno/bin:/usr/local/cuda-11.4/bin
 
 Yarn version: 
-  1.22.11
+  1.22.10
 
 Node version: 
-  16.6.1
+  16.5.0
 
 Platform: 
-  win32 x64
+  linux x64
 
 Trace: 
-  Error: connect ECONNABORTED 104.16.16.35:443
-      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1142:16)
+  SyntaxError: /home/laspruca/Dev/Web/Svelte/computron/package.json: Unexpected string in JSON at position 470
+      at JSON.parse (<anonymous>)
+      at /home/laspruca/.local/share/nvm/v16.5.0/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/home/laspruca/.local/share/nvm/v16.5.0/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/laspruca/.local/share/nvm/v16.5.0/lib/node_modules/yarn/lib/cli.js:321:13
 
 npm manifest: 
   {
@@ -29,6 +33,7 @@ npm manifest:
   		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
   		"lint": "prettier --ignore-path .gitignore  --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
   		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+  		"rebuild": "rm -rf build ; yarn build"
   	},
   	"devDependencies": {
   		"@sveltejs/adapter-static": "^1.0.0-next.19",
@@ -53,7 +58,6 @@ npm manifest:
   	},
   	"type": "module",
   	"dependencies": {
-  		"highlight-ts": "^9.12.1-2",
   		"lodash": "^4.17.21"
   	}
   }
@@ -811,13 +815,6 @@ Lockfile:
     dependencies:
       function-bind "^1.1.1"
   
-  highlight-ts@^9.12.1-2:
-    version "9.12.1-2"
-    resolved "https://registry.yarnpkg.com/highlight-ts/-/highlight-ts-9.12.1-2.tgz#792e79b3f8e1e7c9f017cf1cc52fc4cfe694fbee"
-    integrity sha512-CkLnKaxdwUasdPbzM9YP3EQTYfY/jgLQ4dyl7FFa65h1Ymq/qm+FOsevfNRqI7ZKGlz9scPkAy9OXYvwEtcJSw==
-    dependencies:
-      tslib "^1"
-  
   ignore@^4.0.6:
     version "4.0.6"
     resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
@@ -1412,7 +1409,7 @@ Lockfile:
     dependencies:
       is-number "^7.0.0"
   
-  tslib@^1, tslib@^1.8.1:
+  tslib@^1.8.1:
     version "1.14.1"
     resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
     integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
