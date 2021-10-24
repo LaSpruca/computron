@@ -1,4 +1,4 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import loadProjects from '$lib/loadProjects';
+import loadTutorials from '$lib/loadTutorials';
 
-export const get: RequestHandler = loadProjects(import.meta.glob("./*.md"));
+export const get: RequestHandler = loadTutorials(import.meta.glob("./*.md"));
