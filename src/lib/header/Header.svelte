@@ -1,27 +1,31 @@
 <script lang='ts'>
 	import { page } from '$app/stores';
 	import getPageName from '$lib/pageName';
+	import type { Writable } from 'svelte/store';
+	import {writable} from 'svelte/store';
 	import logo from './logo.svg';
 	import { zip } from '$lib/utils';
 
-	let path: string = '/';
+	let pageName: Writable<string> = writable("");
 
-	page.subscribe((f) => {
-		path = f.path;
+	page.subscribe(({path}) => {
+		pageName.set(getPageName(path));
+		console.log(path);
+		console.log(pageName);
 	});
 
-	let pageName: string;
-
-	$: pageName = getPageName(path);
-
 	const isActive = (pth: string): boolean =>
-		zip(pth.split('/'), path.split('/'))
+		zip(pth.split('/'), pth.split('/'))
 			.slice(1)
 			.map(([a, b]) => a === b)
 			.reduce((prev, curr) => (prev === false ? false : curr));
 
 	let burger: boolean = false;
 </script>
+
+<svelte:head>
+	<title>{$pageName} | COMPUTRON</title>
+</svelte:head>
 
 <header>
 	<div class='brand'>
