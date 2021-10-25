@@ -1,5 +1,7 @@
+/* Reusable chunks of code that can be place into other classes */
 @import '../css/colors';
 
+/* B O X, anything with centered text, and a border */
 @mixin box {
   text-align: center;
   margin: 1em;
@@ -9,6 +11,7 @@
   border: #efefef 2px solid;
 }
 
+/* Styles for links that expand on hover */
 @mixin link {
   background-color: $space-cadet;
   padding: 1rem;

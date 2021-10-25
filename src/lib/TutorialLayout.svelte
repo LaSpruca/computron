@@ -1,4 +1,5 @@
 <script>
+	// Create a layout for all of the tutorial pages
 	export let name;
 	import "../css/tutorial.scss";
 </script>

@@ -1,3 +1,4 @@
+/* Make the cards container a flex box */
 .cards {
 	display: flex;
 	flex-wrap: wrap;
@@ -6,7 +7,9 @@
 	align-items: center;
 }
 
+/* Style the cards themselfs */
 .card {
+	/* Make the cards a B O X */
 	@include box;
 
 	width: 30%;

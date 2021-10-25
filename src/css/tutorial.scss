@@ -1,6 +1,8 @@
+/* Styles for tutorial pages */
 @import 'colors';
 
 .tutorial {
+	/* Make headings look good with underline and center */
 	h1,
 	h2,
 	h3,
@@ -19,28 +21,34 @@
 		text-underline-offset: 5px;
 	}
 
+	/* Set the main font size to be nice */
 	p,
 	li {
 		font-size: 1.1em;
 	}
 
+	/* Separate the paragraphs */
 	p {
 		padding: 1rem;
 	}
 
+	/* Make lists look better */
 	ul {
 		padding: 2rem 3rem;
 		list-style-type: '→    ';
 	}
 
+	/* Add some padding to list elements */
 	li {
 		padding: 0.5rem 0;
 	}
 
+	/* Set the font of the code blocks */
 	code {
 		font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;
 	}
 
+	/* Make images display nicely */
 	img {
 		display: block;
 		width: 50%;
@@ -49,6 +57,7 @@
 	}
 }
 
+/* Stop images being too small */
 @media only screen and (max-width: 1100px) {
 	.tutorial img {
 		width: 100%;

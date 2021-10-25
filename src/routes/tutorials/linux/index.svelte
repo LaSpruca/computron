@@ -2,22 +2,24 @@
 	import type { Load } from '@sveltejs/kit';
 	import type { Tutorial } from '$lib/types';
 
+	/// Loads all tutorials before the page is loaded
 	export const load: Load = async ({ fetch }) => {
+		// Get the tutorials
 		let tutorials: Tutorial[] = await (await fetch('/tutorials/linux/tutorials.json')).json();
+		// Set to store the tags
 		let tags: Set<string> = new Set();
-		let platforms: Set<string> = new Set();
+		// Add all the tags
 		for (let download of tutorials) {
 			download.tags.forEach(tags.add, tags);
 		}
+		// Return the processed data
 		return {
 			props: {
 				tutorials,
+				// Convert the Set to an array
 				tags: Array.of(...tags).map((x) => {
 					return { tag: x, selected: false };
 				}),
-				platforms: Array.of(...platforms).map((x) => {
-					return { platform: x, selected: false };
-				})
 			}
 		};
 	};
@@ -26,13 +28,17 @@
 <script lang="ts">
 	import type { Tutorial } from '$lib/types';
 
+	// Create type to store a tag for filtering
 	type Tag = { tag: string; selected: boolean };
 
 	export let tutorials: Tutorial[];
 	export let tags: Tag[];
 
+	// Get all tags that have been selected
 	let selectedTags: string[] = [];
+	$: selectedTags = tags.filter(x => x.selected).map(x => x.tag);
 
+	// F I L T E R I N G
 	$: filteredTutorials =
 		selectedTags.length >= 1
 			? tutorials.filter((download) => selectedTags.every((v) => download.tags.includes(v)))
@@ -73,10 +79,13 @@
 </div>
 
 <style lang="scss">
+	/* Import all nescarry styles */
   @import '../../../css/colors';
   @import '../../../css/mixins';
   @import '../../../css/cards-display';
 
+
+	/* Make the title look good */
   .title {
     text-align: center;
     padding: 2rem;
@@ -125,6 +134,7 @@
     }
   }
 
+	/* Remove any styles created by a tags */
 	a {
 		text-decoration: none;
 		color: inherit;

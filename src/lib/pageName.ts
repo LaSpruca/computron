@@ -1,3 +1,4 @@
+/// Function to get the name that should be displayed for a page
 const getPageName = (path: string): string =>
 	path !== '/'
 		? path

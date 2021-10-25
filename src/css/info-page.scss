@@ -1,9 +1,13 @@
+/* Styles for an info page */
 @import 'colors';
 @import "mixins";
 
+/* The banner explaining the page */
 .welcome {
+  /* Make it a box */
   @include box;
 
+  /* Make the H1 stand out */
   h1 {
     background-color: $blue-crayola;
     padding: 1rem;
@@ -11,24 +15,27 @@
     font-weight: 600;
   }
 
+  /* The main paragraph of the welcome box */
   p {
     padding: 3em;
     font-size: 13pt;
   }
 }
 
+/* The main content boxes */
 .section {
   @include box;
   display: flex;
   flex-direction: column;
 
+  /* The main content of the box */
   &__title {
     position: relative;
     font-size: 16pt;
     color: $space-cadet;
     text-align: center;
     background-color: $blue-crayola;
-
+    /* The title itself */
     h1 {
       color: $ghost-white;
       padding: 1rem;
@@ -37,6 +44,7 @@
     }
   }
 
+  /* The main content */
   &__content {
     margin: 1rem;
     text-align: left;
@@ -48,6 +56,7 @@
       padding: 2rem;
     }
 
+    /* Style for links */
     &__links {
       display: flex;
       flex-wrap: wrap;
@@ -63,6 +72,7 @@
   }
 }
 
+/* Make it responsive, with things moving to column fit on page */
 @media only screen and (max-width: 700px) {
   .welcome p {
     padding: 3rem;
