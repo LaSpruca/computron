@@ -3,7 +3,7 @@
 	import type { Tutorial } from '$lib/types';
 
 	export const load: Load = async ({ fetch }) => {
-		let tutorials: Tutorial[] = await (await fetch('/tutorials/linux/tutorials.json')).json();
+		let tutorials: Tutorial[] = await (await fetch('/tutorials/windows/tutorials.json')).json();
 		let tags: Set<string> = new Set();
 		let platforms: Set<string> = new Set();
 		for (let download of tutorials) {
@@ -39,7 +39,7 @@
 			: tutorials;
 </script>
 
-<h1 class="title">Tutorials - Linux</h1>
+<h1 class="title">Tutorials - Windows</h1>
 
 <div class="filters">
 	<span class="filters__title">Filter by:</span>
@@ -57,7 +57,7 @@
 <div class="cards">
 	{#each filteredTutorials as tutorial}
 		<div class="card">
-			<a sveltekit:prefetch href={"/tutorials/linux/" + tutorial.slug}>
+			<a sveltekit:prefetch href={"/tutorials/windows/" + tutorial.slug}>
 				<h1 class="card__name">
 					{tutorial.name}
 				</h1>
