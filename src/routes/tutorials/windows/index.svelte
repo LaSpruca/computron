@@ -63,7 +63,7 @@
 <div class="cards">
 	{#each filteredTutorials as tutorial}
 		<div class="card">
-			<a sveltekit:prefetch href={"/tutorials/linux/" + tutorial.slug}>
+			<a sveltekit:prefetch href={"/tutorials/windows/" + tutorial.slug}>
 				<h1 class="card__name">
 					{tutorial.name}
 				</h1>
